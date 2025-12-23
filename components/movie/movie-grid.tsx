@@ -9,8 +9,8 @@ interface Movie {
 	name?: string
 	poster_path: string | null
 	vote_average: number
-	release_date?: string | null
-	first_air_date?: string | null
+	release_date?: string | null | undefined
+	first_air_date?: string | null | undefined
 	media_type?: 'movie'
 }
 
