@@ -1,7 +1,32 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+	images: {
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'image.tmdb.org',
+			},
+			{
+				protocol: 'https',
+				hostname: 'yts.mx',
+			},
+			{
+				protocol: 'http',
+				hostname: 'yts.mx',
+			},
+			{
+				protocol: 'https',
+				hostname: 'img.yts.mx',
+			},
+			{
+				protocol: 'http',
+				hostname: 'img.yts.mx',
+			},
+		],
+		// Disable image optimization for YTS images to avoid 400 errors
+		unoptimized: false,
+	},
+}
 
-export default nextConfig;
+export default nextConfig
