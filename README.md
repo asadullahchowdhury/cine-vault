@@ -1,15 +1,14 @@
 # CineVault - Movie Website
 
-A modern, fully responsive movie website built with Next.js 16, TypeScript, and Tailwind CSS. Discover and explore movies and TV series with a cinematic dark theme.
+A modern, fully responsive movie website built with Next.js 16, TypeScript, and Tailwind CSS. Discover and explore movies with a cinematic dark theme.
 
 ## Features
 
-- **Homepage**: Display latest and trending movies from TMDB API
-- **Search**: Movie/series search with filters
-- **Series Page**: Dedicated section for TV shows
-- **Preview Page**: Detailed movie/series information with cast, trailers, and similar content
+- **Homepage**: Display latest and trending movies from YTS API
+- **Search**: Movie search with filters
+- **Preview Page**: Detailed movie information with cast, trailers, and similar content
 - **Wishlist System**: Save your favorite movies (requires authentication)
-- **Categories**: Browse movies and TV shows by genre
+- **Categories**: Browse movies by genre
 - **Authentication**: User registration and login system
 - **Responsive Design**: Mobile-first, works on all screen sizes
 - **Dark Theme**: Cinematic dark theme with smooth animations
@@ -25,7 +24,7 @@ A modern, fully responsive movie website built with Next.js 16, TypeScript, and 
 - **Forms**: React Hook Form + Zod
 - **Database**: MySQL (via mysql2)
 - **Authentication**: JWT (jose)
-- **API**: TMDB (The Movie Database)
+- **API**: YTS (YIFY Torrents)
 
 ## Getting Started
 
@@ -33,7 +32,6 @@ A modern, fully responsive movie website built with Next.js 16, TypeScript, and 
 
 - Node.js 18+ 
 - MySQL database
-- TMDB API key ([Get one here](https://www.themoviedb.org/settings/api))
 
 ### Installation
 
@@ -61,9 +59,6 @@ DB_USER=root
 DB_PASSWORD=your_password
 DB_NAME=cinevault
 DB_PORT=3306
-
-# TMDB API Key
-NEXT_PUBLIC_TMDB_API_KEY=your_tmdb_api_key_here
 
 # JWT Secret (change this in production)
 JWT_SECRET=your-super-secret-jwt-key-change-in-production
@@ -97,10 +92,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
   /(main)              # Main app pages
     /home              # Homepage
     /search            # Search page
-    /series            # TV series page
     /categories        # Genre browsing
     /wishlist          # User favorites
-    /preview/[id]      # Movie/series details
+    /preview/[id]      # Movie details
   /api                 # API routes
     /auth              # Authentication endpoints
     /movies            # Movie data endpoints
@@ -129,9 +123,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 ### Movies
 - `GET /api/movies/trending` - Get trending movies
 - `GET /api/movies/search?q=query&page=1` - Search movies
-- `GET /api/movies/[id]?type=movie` - Get movie details
-- `GET /api/movies/genres?type=movie` - Get genres
-- `GET /api/movies/genres/[id]?type=movie` - Get movies by genre
+- `GET /api/movies/[id]` - Get movie details
+- `GET /api/movies/genres` - Get genres
+- `GET /api/movies/genres/[id]` - Get movies by genre
 
 ### Wishlist
 - `GET /api/wishlist` - Get user's wishlist
@@ -142,7 +136,7 @@ Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 The database includes three main tables:
 - `users` - User accounts
-- `wishlist` - User's saved movies/TV shows
+- `wishlist` - User's saved movies
 - `watch_progress` - Watch progress tracking (for future "Continue Watching" feature)
 
 See `lib/db/schema.sql` for the complete schema.
@@ -179,4 +173,4 @@ MIT
 
 ## Credits
 
-- Movie data provided by [The Movie Database (TMDB)](https://www.themoviedb.org/)
+- Movie data provided by [YTS (YIFY Torrents)](https://yts.mx/)

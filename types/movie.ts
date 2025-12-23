@@ -1,8 +1,7 @@
 import type { YtsMovie, YtsMovieDetails } from '@/lib/api/yts'
-import type { TmdbMovie, TmdbMovieDetails, TmdbTvShow, TmdbTvDetails } from '@/lib/api/tmdb'
 
 /**
- * Unified movie interface that works with both YTS and TMDB data
+ * Unified movie interface for YTS data
  */
 export interface UnifiedMovie {
 	id: number
@@ -16,7 +15,7 @@ export interface UnifiedMovie {
 	genre_ids: number[]
 	genres?: Array<{ id: number; name: string }>
 	popularity: number
-	media_type: 'movie' | 'tv'
+	media_type: 'movie'
 	year?: number
 	runtime?: number
 	imdb_code?: string
@@ -70,50 +69,4 @@ export function ytsToUnified(ytsMovie: YtsMovie | YtsMovieDetails): UnifiedMovie
 	}
 }
 
-/**
- * Convert TMDB movie to unified format
- */
-export function tmdbMovieToUnified(tmdbMovie: TmdbMovie | TmdbMovieDetails): UnifiedMovie {
-	return {
-		id: tmdbMovie.id,
-		title: tmdbMovie.title,
-		overview: tmdbMovie.overview || null,
-		poster_path: tmdbMovie.poster_path,
-		backdrop_path: tmdbMovie.backdrop_path,
-		release_date: tmdbMovie.release_date || null,
-		vote_average: tmdbMovie.vote_average,
-		vote_count: tmdbMovie.vote_count,
-		genre_ids: tmdbMovie.genre_ids,
-		genres: 'genres' in tmdbMovie ? tmdbMovie.genres : undefined,
-		popularity: tmdbMovie.popularity,
-		media_type: tmdbMovie.media_type || 'movie',
-		year: tmdbMovie.release_date
-			? new Date(tmdbMovie.release_date).getFullYear()
-			: undefined,
-		runtime: 'runtime' in tmdbMovie ? tmdbMovie.runtime : undefined,
-	}
-}
-
-/**
- * Convert TMDB TV show to unified format
- */
-export function tmdbTvToUnified(tmdbTv: TmdbTvShow | TmdbTvDetails): UnifiedMovie {
-	return {
-		id: tmdbTv.id,
-		title: tmdbTv.name,
-		overview: tmdbTv.overview || null,
-		poster_path: tmdbTv.poster_path,
-		backdrop_path: tmdbTv.backdrop_path,
-		release_date: tmdbTv.first_air_date || null,
-		vote_average: tmdbTv.vote_average,
-		vote_count: tmdbTv.vote_count,
-		genre_ids: tmdbTv.genre_ids,
-		genres: 'genres' in tmdbTv ? tmdbTv.genres : undefined,
-		popularity: tmdbTv.popularity,
-		media_type: 'tv',
-		year: tmdbTv.first_air_date
-			? new Date(tmdbTv.first_air_date).getFullYear()
-			: undefined,
-	}
-}
 

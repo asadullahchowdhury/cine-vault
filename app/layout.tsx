@@ -4,7 +4,6 @@ import './globals.css'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Preloader } from '@/components/animations/preloader'
-import { getTmdbConfiguration } from '@/lib/api/tmdb'
 
 const geistSans = Geist({
 	variable: '--font-geist-sans',
@@ -18,7 +17,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
 	title: 'CineVault - Your Ultimate Movie Destination',
-	description: 'Discover and explore movies and TV series with CineVault',
+	description: 'Discover and explore movies with CineVault',
 }
 
 export default async function RootLayout({
@@ -26,14 +25,6 @@ export default async function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
-	// Initialize TMDB configuration early
-	try {
-		await getTmdbConfiguration()
-	} catch (error) {
-		// Silently fail - will use default config
-		console.warn('Failed to load TMDB configuration:', error)
-	}
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body

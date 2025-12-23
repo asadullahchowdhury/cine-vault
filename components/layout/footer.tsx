@@ -9,8 +9,7 @@ export function Footer() {
 					<div className="space-y-4">
 						<h3 className="text-lg font-semibold">CineVault</h3>
 						<p className="text-sm text-muted-foreground">
-							Your ultimate destination for discovering and exploring movies and
-							TV series.
+							Your ultimate destination for discovering and exploring movies.
 						</p>
 					</div>
 					<div className="space-y-4">
@@ -22,14 +21,6 @@ export function Footer() {
 									className="text-muted-foreground transition-colors hover:text-foreground"
 								>
 									Home
-								</Link>
-							</li>
-							<li>
-								<Link
-									href="/series"
-									className="text-muted-foreground transition-colors hover:text-foreground"
-								>
-									Series
 								</Link>
 							</li>
 							<li>

@@ -16,7 +16,6 @@ export function Header() {
 
 	const navLinks = [
 		{ href: '/home', label: 'Home' },
-		{ href: '/series', label: 'Series' },
 		{ href: '/categories', label: 'Categories' },
 		{ href: '/wishlist', label: 'Wishlist' },
 	]
@@ -163,4 +162,3 @@ export function Header() {
 		</header>
 	)
 }
-

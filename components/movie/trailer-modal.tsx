@@ -18,9 +18,9 @@ export function TrailerModal({ trailerKey }: TrailerModalProps) {
 
 	return (
 		<Dialog open={isOpen} onOpenChange={setIsOpen}>
-			<DialogTrigger>
-				<Button size="lg" variant="default">
-					<Icon name="Play" className="mr-2 h-4 w-4" />
+			<DialogTrigger asChild>
+				<Button size="lg" variant="default" className="bg-primary hover:bg-primary/90">
+					<Icon name="Play" className="mr-2 h-4 w-4 fill-white" />
 					Watch Trailer
 				</Button>
 			</DialogTrigger>

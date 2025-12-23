@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button'
 
 interface AddToWishlistButtonProps {
 	movieId: number
-	movieType: 'movie' | 'tv'
+	movieType: 'movie'
 	title?: string
 }
 
@@ -58,10 +58,11 @@ export function AddToWishlistButton({
 			variant="default"
 			onClick={handleToggle}
 			disabled={isLoading}
+			className="bg-primary hover:bg-primary/90"
 		>
 			<Icon
 				name="Heart"
-				className={`mr-2 h-4 w-4 ${isInWishlist ? 'fill-current' : ''}`}
+				className={`mr-2 h-4 w-4 ${isInWishlist ? 'fill-white' : ''}`}
 			/>
 			{isInWishlist ? 'Remove from Wishlist' : 'Add to Wishlist'}
 		</Button>

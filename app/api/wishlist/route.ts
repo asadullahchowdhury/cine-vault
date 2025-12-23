@@ -21,7 +21,7 @@ async function getUserId(request: NextRequest): Promise<number | null> {
 
 const addWishlistSchema = z.object({
 	movieId: z.number(),
-	movieType: z.enum(['movie', 'tv']),
+	movieType: z.enum(['movie']),
 	title: z.string().optional(),
 	posterPath: z.string().nullable().optional(),
 	rating: z.number().optional(),

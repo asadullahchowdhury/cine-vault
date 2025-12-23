@@ -18,15 +18,37 @@ export default function SearchPage() {
 	const performSearch = useCallback(async (searchQuery: string, pageNum = 1) => {
 		if (!searchQuery.trim()) {
 			setMovies([])
+			setTotalPages(1)
 			return
 		}
 
 		setIsLoading(true)
 		try {
 			const response = await fetch(
-				`/api/movies/search?q=${encodeURIComponent(searchQuery)}&page=${pageNum}`
+				`/api/movies/search?q=${encodeURIComponent(searchQuery.trim())}&page=${pageNum}`
 			)
+			
+			if (!response.ok) {
+				const errorData = await response.json().catch(() => ({}))
+				console.error('Search API error:', errorData)
+				if (pageNum === 1) {
+					setMovies([])
+				}
+				setTotalPages(1)
+				return
+			}
+
 			const data = await response.json()
+			
+			if (data.error) {
+				console.error('Search error:', data.error)
+				if (pageNum === 1) {
+					setMovies([])
+				}
+				setTotalPages(1)
+				return
+			}
+
 			if (pageNum === 1) {
 				setMovies(data.results || [])
 			} else {
@@ -35,6 +57,10 @@ export default function SearchPage() {
 			setTotalPages(data.total_pages || 1)
 		} catch (error) {
 			console.error('Search error:', error)
+			if (pageNum === 1) {
+				setMovies([])
+			}
+			setTotalPages(1)
 		} finally {
 			setIsLoading(false)
 		}
@@ -71,7 +97,7 @@ export default function SearchPage() {
 						<Icon name="Search" className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
 						<Input
 							type="search"
-							placeholder="Search for movies, TV shows..."
+							placeholder="Search for movies..."
 							value={query}
 							onChange={(e) => setQuery(e.target.value)}
 							className="pl-10"
@@ -85,7 +111,7 @@ export default function SearchPage() {
 
 			<div className="mb-6 flex items-center justify-between">
 				<h1 className="text-2xl font-bold">
-					{query ? `Search Results for "${query}"` : 'Search Movies & TV Shows'}
+					{query ? `Search Results for "${query}"` : 'Search Movies'}
 				</h1>
 				<Button variant="outline" size="sm">
 					<Icon name="Filter" className="mr-2 h-4 w-4" />
@@ -95,10 +121,20 @@ export default function SearchPage() {
 
 			<MovieGrid movies={movies} isLoading={isLoading} />
 
+			{!isLoading && query && movies.length === 0 && (
+				<div className="mt-12 text-center">
+					<Icon name="Search" className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
+					<h3 className="text-xl font-semibold mb-2">No movies found</h3>
+					<p className="text-muted-foreground">
+						Try searching with different keywords
+					</p>
+				</div>
+			)}
+
 			{page < totalPages && movies.length > 0 && (
 				<div className="mt-8 text-center">
 					<Button onClick={loadMore} disabled={isLoading}>
-						Load More
+						{isLoading ? 'Loading...' : 'Load More'}
 					</Button>
 				</div>
 			)}

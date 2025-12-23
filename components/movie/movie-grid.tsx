@@ -9,9 +9,9 @@ interface Movie {
 	name?: string
 	poster_path: string | null
 	vote_average: number
-	release_date?: string
-	first_air_date?: string
-	media_type?: 'movie' | 'tv'
+	release_date?: string | null
+	first_air_date?: string | null
+	media_type?: 'movie'
 }
 
 interface MovieGridProps {

@@ -5,10 +5,6 @@ const nextConfig: NextConfig = {
 		remotePatterns: [
 			{
 				protocol: 'https',
-				hostname: 'image.tmdb.org',
-			},
-			{
-				protocol: 'https',
 				hostname: 'yts.mx',
 			},
 			{
@@ -22,6 +18,22 @@ const nextConfig: NextConfig = {
 			{
 				protocol: 'http',
 				hostname: 'img.yts.mx',
+			},
+			{
+				protocol: 'https',
+				hostname: 'yts.lt',
+			},
+			{
+				protocol: 'http',
+				hostname: 'yts.lt',
+			},
+			{
+				protocol: 'https',
+				hostname: 'img.yts.lt',
+			},
+			{
+				protocol: 'http',
+				hostname: 'img.yts.lt',
 			},
 		],
 		// Disable image optimization for YTS images to avoid 400 errors

@@ -9,7 +9,7 @@ export interface WishlistItem {
 	id: number
 	userId: number
 	movieId: number
-	movieType: 'movie' | 'tv'
+	movieType: 'movie'
 	createdAt: Date
 }
 
@@ -17,7 +17,7 @@ export interface WatchProgress {
 	id: number
 	userId: number
 	movieId: number
-	movieType: 'movie' | 'tv'
+	movieType: 'movie'
 	progress: number
 	updatedAt: Date
 }
@@ -33,7 +33,7 @@ export interface Movie {
 	voteCount: number
 	genreIds: number[]
 	popularity: number
-	type: 'movie' | 'tv'
+	type: 'movie'
 }
 
 export interface MovieDetails extends Movie {

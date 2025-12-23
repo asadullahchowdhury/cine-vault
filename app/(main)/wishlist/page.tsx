@@ -85,7 +85,7 @@ export default function WishlistPage() {
 					<Icon name="Heart" className="mb-4 h-16 w-16 text-muted-foreground" />
 					<h2 className="mb-2 text-2xl font-semibold">Your Wishlist is Empty</h2>
 					<p className="mb-6 text-muted-foreground">
-						Start adding movies and TV shows to your wishlist
+						Start adding movies to your wishlist
 					</p>
 					<a href="/home">
 						<Button>Browse Movies</Button>
