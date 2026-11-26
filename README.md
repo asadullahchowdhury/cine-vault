@@ -26,61 +26,9 @@ A modern, fully responsive movie website built with Next.js 16, TypeScript, and 
 - **Authentication**: JWT (jose)
 - **API**: YTS (YIFY Torrents)
 
-## Getting Started
+## 📌 About this repository
 
-### Prerequisites
-
-- Node.js 18+ 
-- MySQL database
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <repository-url>
-cd cine-vault
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Set up environment variables:
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and add your configuration:
-```env
-# Database Configuration
-DB_HOST=localhost
-DB_USER=root
-DB_PASSWORD=your_password
-DB_NAME=cinevault
-DB_PORT=3306
-
-# JWT Secret (change this in production)
-JWT_SECRET=your-super-secret-jwt-key-change-in-production
-
-# Node Environment
-NODE_ENV=development
-```
-
-4. Set up the database:
-```bash
-# Import the schema
-mysql -u root -p < lib/db/schema.sql
-```
-
-Or manually run the SQL commands from `lib/db/schema.sql` in your MySQL client.
-
-5. Run the development server:
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+This repository is a **portfolio showcase** of how I built CineVault — architecture, API routes and UI. It isn't packaged for installation or reuse; feel free to browse the code.
 
 ## Project Structure
 
@@ -141,23 +89,6 @@ The database includes three main tables:
 
 See `lib/db/schema.sql` for the complete schema.
 
-## Development
-
-### Code Style
-
-This project follows the coding standards defined in `.cursorrules`:
-- Use tabs for indentation
-- Single quotes for strings
-- Functional components with TypeScript
-- Follow naming conventions (PascalCase for components, camelCase for functions)
-
-### Building for Production
-
-```bash
-npm run build
-npm start
-```
-
 ## Future Enhancements
 
 - Continue Watching feature
@@ -169,7 +100,12 @@ npm start
 
 ## License
 
-MIT
+© 2026 Rahat Chowdhury. All rights reserved. Shared for portfolio purposes only.
+
+## 👤 Author
+
+**Rahat Chowdhury** — Full-Stack Developer
+[Portfolio](https://rahat-chowdhury.vercel.app) · [LinkedIn](https://www.linkedin.com/in/chowdhuryrahat) · [GitHub](https://github.com/asadullahchowdhury)
 
 ## Credits
 
